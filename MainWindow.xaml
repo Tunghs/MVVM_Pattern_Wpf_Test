@@ -9,12 +9,14 @@
     <DockPanel>
         <ToolBar DockPanel.Dock="Top">
             <Button Content="-" Width="50"
-                    Command="{Binding MinusComaand}"/>
-            <Label Width="50" Background="#FF979797"
-                   Content="{Binding Number}"/>
+                    Command="{Binding MinusComaand}"
+                    IsEnabled="{Binding MinusEnable}"/>
+            <TextBox Width="50" Background="#FF979797"
+                   Text="{Binding Number}"/>
             <Button Content="+" Width="50"
-                    Command="{Binding PlusCommand}"/>
+                    Command="{Binding PlusCommand}"
+                    IsEnabled="{Binding PlusEnable}"/>
         </ToolBar>
-        <TextBox/>
+        <TextBox Text="{Binding PageContents}"/>
     </DockPanel>
 </Window>
