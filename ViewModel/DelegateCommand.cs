@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,8 @@ namespace MVVM_test.ViewModel
 {
     public class DelegateCommand : ICommand
     {
-        private readonly Func<bool> canExecute;
-        private readonly Action execute;
+        private readonly Func<bool> _canExecute;
+        private readonly Action _execute;
 
         /// <summary>
         /// Initializes a new instance of the DelegateCommand class.
@@ -27,8 +28,8 @@ namespace MVVM_test.ViewModel
         /// <param name="canExecute">can execute function</param>
         public DelegateCommand(Action execute, Func<bool> canExecute)
         {
-            this.execute = execute;
-            this.canExecute = canExecute;
+            this._execute = execute;
+            this._canExecute = canExecute;
         }
         /// <summary>
         /// can executes event handler
@@ -42,11 +43,11 @@ namespace MVVM_test.ViewModel
         /// <returns>can execute or not</returns>
         public bool CanExecute(object o)
         {
-            if (this.canExecute == null)
+            if (this._canExecute == null)
             {
                 return true;
             }
-            return this.canExecute();
+            return this._canExecute();
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace MVVM_test.ViewModel
         /// <param name="o">parameter by default of icomand interface</param>
         public void Execute(object o)
         {
-            this.execute();
+            this._execute();
         }
 
         /// <summary>

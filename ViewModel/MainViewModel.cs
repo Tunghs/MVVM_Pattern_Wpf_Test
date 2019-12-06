@@ -39,7 +39,6 @@ namespace MVVM_test.ViewModel
         }
 
         private ICommand minusComand;
-
         public ICommand MinusComaand
         {
             // get이 하는 일은 minusCommad라는 ICommand 객체를 return 해주는데 이 minusCommand의 실제 수행작업이 Minus() 라는 함수로 위임해 주는 역할을 한다.
@@ -50,6 +49,16 @@ namespace MVVM_test.ViewModel
         private void Minus()
         {
             Number--;
+        }
+
+        private ICommand plusCommand;
+        public ICommand PlusCommand
+        {
+            get { return (this.plusCommand) ?? (this.plusCommand = new DelegateCommand(Plus)); }
+        }
+        private void Plus()
+        {
+            Number++;
             
         }
     }

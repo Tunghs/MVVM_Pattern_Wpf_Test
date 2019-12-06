@@ -8,9 +8,12 @@
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
         <ToolBar DockPanel.Dock="Top">
-            <Button Content="-" Width="50"/>
-            <TextBox Width="50" Background="#FF979797"/>
-            <Button Content="+" Width="50"/>
+            <Button Content="-" Width="50"
+                    Command="{Binding MinusComaand}"/>
+            <Label Width="50" Background="#FF979797"
+                   Content="{Binding Number}"/>
+            <Button Content="+" Width="50"
+                    Command="{Binding PlusCommand}"/>
         </ToolBar>
         <TextBox/>
     </DockPanel>
